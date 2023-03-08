@@ -1,0 +1,81 @@
+<div class="dashboard-box-container">
+    <mat-card class="card-style first-card"  (click)="changePanel()">
+        <div class="flex-col-container">
+            <div class="campaign-type">
+              <p class="font1" [ngStyle]="{'color': data.color}">{{data.theme}}</p>
+                <div class="icon-container">
+                  <mat-icon class="campaign-type-icon pointer" [svgIcon]="data.themeIcon" [ngStyle]="{'color': 'transparent','stroke': 'white'}"></mat-icon>
+                </div>
+            </div>
+            <div class="card-data-flex" [ngStyle]="{'border-left-color': data.color, 'border-top-color': data.color}">
+                <div class="flex-data-container data-right-border">
+                    <div class="data-icon-container">
+                        <mat-icon class="data-icon-svg pointer" [svgIcon]="'titulo@PYPGrandes'" [ngStyle]="{'fill': 'transparent','stroke': data.color}"></mat-icon>
+                    </div>
+                    <div class="data-col tooltip w-80" >
+                        <p class="font2" [ngStyle]="{'color': data.color}">Titulo de campaña</p>
+                        <p class="font3 shorten">{{ data.campaignTitle }}</p>
+                        <span class="tooltiptext">{{ data.campaignTitle  }}</span>
+                    </div>
+                </div>
+                <div class="flex-data-container">
+                    <div class="w-20">
+                        <mat-icon class="data-icon-svg pointer" [svgIcon]="'Tipo@PYPGrandes'" [ngStyle]="{'color': 'transparent','stroke': data.color}"></mat-icon>
+                    </div>
+                    <div class="data-col w-80" >
+                        <p class="font2 m-2" [ngStyle]="{'color': data.color}">Tipo de la campaña</p>
+                        <p class="font3 shorten">{{ data.campaignType }}</p>
+                    </div>
+                </div>
+                <div class="flex-data-container data-center-row data-right-border">
+                    <div class="w-20">
+                        <mat-icon class="data-icon-svg pointer" [svgIcon]="'Estatus@PYPGrandes'" [ngStyle]="{'fill': data.color,'stroke': 'transparent'}"></mat-icon>
+                    </div>
+                    <div class="data-col w-80" >
+                        <p class="font2 no-margin" [ngStyle]="{'color': data.color}">Estatus de campaña</p>
+                        <p class="font3 shorten">{{ data.status }}</p>
+                    </div>
+                </div>
+                <div class="flex-data-container data-center-row">
+                    <div class="w-20">
+                      <mat-icon class="data-icon-svg pointer" [svgIcon]="'usuariosImpactados@PYPGrandes'" [ngStyle]="{'fill': data.color,'stroke': 'transparent'}"></mat-icon>
+                    </div>
+                    <div class="data-col w-80" >
+                        <p class="font2 m-2" [ngStyle]="{'color': data.color}">Número de usuarios impactados</p>
+                        <p class="font3 shorten" >{{ data.impactedUsers }}</p>
+                    </div>
+                </div>
+                <div class="flex-data-container data-right-border">
+                    <div class="w-20">
+                      <mat-icon class="data-icon-svg pointer" [svgIcon]="'Fecha@PYPGrandes'" [ngStyle]="{'fill': data.color,'stroke': 'transparent'}"></mat-icon>
+                    </div>
+                    <div class="data-col tooltip w-80" >
+                        <p class="font2" [ngStyle]="{'color': data.color}" >Fecha y hora de creación</p>
+                        <p class="font3 shorten"> {{ data.creationDate | date:'dd/MM/yyyy - h:mm a'}}</p>
+                        <span class="tooltiptext">{{ data.creationDate | date:'dd/MM/yyyy - h:mm a' }}</span>
+                    </div>
+                </div>
+                <div class="flex-data-container">
+                    <div class="w-20">
+                        <mat-icon class="data-icon-svg pointer" [svgIcon]="'Fecha@PYPGrandes'" [ngStyle]="{'fill': data.color,'stroke': 'transparent'}"></mat-icon>
+                    </div>
+                    <div class="data-col tooltip w-80" >
+                        <p class="font2" [ngStyle]="{'color': data.color}" >Fecha y hora de envío</p>
+                        <p class="font3 shorten">{{ data.sendDate | date:'dd/MM/yyyy - h:mm a'}}</p>
+                        <span class="tooltiptext">{{ data.sendDate | date:'dd/MM/yyyy - h:mm a' }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+
+    <div class="single-data-container" *ngIf="expanded">
+        <div *ngFor="let expandableData of data.expandableData; let i = index" class="data-card">
+            <mat-card class="flex-card card-style">
+                <mat-icon class="data-icon-svg pointer w-30" [svgIcon]="expandableData.icon" [ngStyle]="{'fill': 'transparent','stroke': data.color}"></mat-icon>
+                <p class="font4">{{expandableData.label}}</p>
+                <p class="font5">{{expandableData.value}}</p>
+            </mat-card>
+        </div>
+    </div>
+</div>

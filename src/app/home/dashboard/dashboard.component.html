@@ -1,0 +1,32 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+  <!-- header and title of section -->
+  <div class="dashboard-wraper">
+    <div class="header"></div>
+  </div>
+  <!-- Showing dashboard with information -->
+  <div class="ScrollBar dashboard-box-wrapper">
+    <br />
+    <ngx-loading
+      [show]="loading"
+      [config]="{
+        animationType: ngxLoadingAnimationTypes.rectangleBounce,
+        primaryColour: 'rgb(255,255,255)',
+        backdropBorderRadius: '3px'
+      }"
+    ></ngx-loading>
+    <button (click)="showData()" mat-raised-button color="primary" >Tabla covid</button>
+    <button (click)="hidenData()" mat-raised-button color="primary" >Salud</button>
+    <div *ngIf="element" >
+      <button (click)="file.click()" mat-raised-button >Cargar información de archivo</button>
+      <app-information> </app-information>
+    </div>
+    <div *ngIf="elementwo">
+      <div *ngFor="let data of elements">
+        <app-dashboard-box [data]="data" [mainRef]="this"></app-dashboard-box>
+      </div>
+    </div>
+    <br />
+  </div>
+</div>
+<input type="file" #file hidden (change)="getFile($event)" />
