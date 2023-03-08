@@ -15,11 +15,26 @@
         backdropBorderRadius: '3px'
       }"
     ></ngx-loading>
-    <button (click)="showData()" mat-raised-button color="primary" >Tabla covid</button>
-    <button (click)="hidenData()" mat-raised-button color="primary" >Salud</button>
+    <div class="quantity">
+      <button (click)="showData()" mat-raised-button color="primary" >Tabla covid</button>
+      <button (click)="hidenData()" mat-raised-button color="primary" >Salud</button>
+        <div class="example-full-width">
+          <label>Cantidad Máxima:</label>
+          <span>
+           {{ stateMax?.state }} | {{ stateMax?.summary }} 
+          </span>
+        </div>
+        <div class="example-full-width">
+          <label>Cantidad Mínima:</label>
+          <span>
+           {{ stateMin?.state }} | {{ stateMin?.summary }} 
+          </span>
+        </div>
+
+      </div>
     <div *ngIf="element" >
       <button (click)="file.click()" mat-raised-button >Cargar información de archivo</button>
-      <app-information> </app-information>
+      <app-information [rows]="excelData"></app-information>
     </div>
     <div *ngIf="elementwo">
       <div *ngFor="let data of elements">

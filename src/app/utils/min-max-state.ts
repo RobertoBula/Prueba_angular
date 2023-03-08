@@ -35,11 +35,11 @@ const findMaxAndMin = (states: any) => {
     return {
         min: {
             state: keys[indexMin],
-            summary: numbers[indexMin]
+            summary: +numbers[indexMin]
         },
         max: {
             state: keys[indexMax],
-            summary: numbers[indexMax]
+            summary: +numbers[indexMax]
         }
     };
 }
